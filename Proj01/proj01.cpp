@@ -22,13 +22,9 @@ int main(){
 	double side_b,Angle_A, side_c,side_a,Angle_B,Angle_C;
 	cin>> side_b  >> Angle_A >> side_c;
 	side_a=sqrt(pow(side_b,2)+pow(side_c,2)-(2*side_b*side_c*cos(Angle_A*pi/180)));
-	//side_a=sqrt(pow(side_c,2)-pow(side_b,2)+2*side_a*side_b*cos(Angle_A*pi/180));
 	Angle_B=asin(sin(Angle_A*pi/180)/side_a*side_b)*180/pi;
 	Angle_C=180-Angle_A-Angle_B;
-	cout//<<side_b<<' '
-		//<<Angle_A<<' '
-		//<<side_c<<' '
-		<<fixed<<setprecision(2)<<side_a<<endl
+	cout<<fixed<<setprecision(2)<<side_a<<endl
 		<<fixed<<setprecision(2)<<Angle_B<<endl
 		<<fixed<<setprecision(2)<<Angle_C<<endl;
 	
