@@ -1,9 +1,17 @@
 /*
-Zehua Li lizehua3@bulldog
+Zehua Li
+lizehua3@bulldog
+section:003
 2016-09-13
+project 02
 proj02.cpp
 
 Your Comments
+caculate how many time in each series need to run in order to get the epsilon that user provide
+out put the result of each series and the times each series ran in the process
+to check the input epsilon
+if the epsilon is 0 then just stop and program and out put 0 for each series
+
 */
 
 #include <iostream>
@@ -59,4 +67,5 @@ int main(){
 		}
 		cout<<fixed<<setprecision(12)<<new_n<<" "<<count_n<<endl;
 	}
+	return 0;
 }
