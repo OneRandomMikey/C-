@@ -5,12 +5,12 @@ using std::setprecision;
 #include <cmath>
 using std::abs;
 
-long fn(long x){
-    long fn_value;
+double fn(double x){
+    double fn_value;
     fn_value=-6*pow(x,2)+5*x+3;
     return fn_value;
 }
-double integral(long x){
+double integral(double x){
     double fn_integral;
     fn_integral=-2*pow(x,3)+(5.0/2)*pow(x,2)+3*x;
     return fn_integral;
@@ -20,12 +20,13 @@ double trapezoid(double a,double b,double n){
     double  sum_area,x=0;
     for (x=0;x<=1;x+=((b-a)/n)){
         cout<<"x: "<<x<<endl;
-        if ((x==0) || (x=1)){
+        if ((x==0) || (x==1)){
             fn_value+=fn(x);
-
+            cout<<"1: "<<fn_value<<endl;
         }
         else{
             fn_value+=2*fn(x);
+            cout<<"2: "<<fn_value<<endl;
         }
     }
     cout<<"fn value: "<<fn_value<<endl;
