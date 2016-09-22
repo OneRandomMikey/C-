@@ -16,40 +16,35 @@ double integral(double x){
     return fn_integral;
 }
 double trapezoid(double a,double b,double n){
-    double y=1,fn_value=0;
-    double  sum_area,x=0;
+    double fn_value=0 , sum_area,x=0;
     for (x=0;x<=1;x+=((b-a)/n)){
-        cout<<"x: "<<x<<endl;
         if ((x==0) || (x==1)){
             fn_value+=fn(x);
-            cout<<"1: "<<fn_value<<endl;
         }
         else{
             fn_value+=2*fn(x);
-            cout<<"2: "<<fn_value<<endl;
         }
     }
-    cout<<"fn value: "<<fn_value<<endl;
     sum_area=((b-a)/(2*n))*fn_value;
     return sum_area;
 }
 int main(){
-
-
     double tolerance,trapezoid_value,integral_value;
     double n;
+    cout<<"Tolerance: ";
     cin>>tolerance;
+    cout<<"Initial trapezoid count: ";
     cin>>n;
     integral_value=integral(1);
     trapezoid_value=trapezoid(0,1,n);
-    // do{
-    //     trapezoid_value=trapezoid(0,1,n);
-    //     n*=2;
-        //cout<<abs(integral_value-trapezoid_value)<<endl;
-    // }
-    // while (abs(integral_value-trapezoid_value)>tolerance);
-    //integral_value=integral(1);
-    //trapezoid_value=trapezoid(0,1,n);
-    cout<<integral_value<<endl;
-    cout<<trapezoid_value<<n<<endl;
+    while(abs(integral_value-trapezoid_value)>tolerance){
+        double difference;
+        difference=abs(integral_value-trapezoid_value);
+        cout<<"Result: "<<trapezoid_value<<", traps: "<<n<<", diff: "<<difference<<endl;
+        n*=2;
+        trapezoid_value=trapezoid(0,1,n);
+    }
+    cout<<"Trap count: "<<n<<", estimate: "<<trapezoid_value<<", exact: "
+        <<integral_value<<", tolerance: "<<tolerance<<endl;
+    return 0;
 }
