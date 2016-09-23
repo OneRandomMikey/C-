@@ -1,27 +1,26 @@
+
 #include<iostream>
 using std::cout; using std::cin; using std::endl;
 using std::boolalpha;
+#include<cmath>
 
 long sum_divisors ( long num ){
-    long divisors = 2, sum, quotient = num;
+    long divisors = 2, sum, quotient, sqrt_num = sqrt(num);
     if ( num != 1){
         sum = num + 1;
     }
     else{
         sum = num;
     }
-    if (num % 2 == 0){
-        while ( divisors < quotient){
-            if ( num % divisors != 0){
-                divisors++;
-                continue;
-            }
-            else {
-                quotient = num / divisors;
-                sum+=(divisors + quotient);
-                divisors ++;
-            }
-            cout<< "divisors: "<<divisors<<" quotent: "<< quotient<<endl;
+
+    while ( divisors <= sqrt_num){
+        if ( num % divisors != 0){
+            divisors++;
+        }
+        else {
+            quotient = num / divisors;
+            sum += (divisors + quotient);
+            divisors ++;
         }
     }
     return sum;
