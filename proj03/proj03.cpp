@@ -1,8 +1,8 @@
 /*
 Zehua Li
+proj03
 section:03
 2016-9-23
-proj03
 proj03.cpp
 
 Comments:
