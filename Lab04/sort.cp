@@ -39,6 +39,12 @@ string abbreviate(string loc){
         }
     }
     return loc;
+
+
+
+string dec_to_loc(long dec){
+    
+}
 }
 int main (){
   // string my_str = "aebcd";
