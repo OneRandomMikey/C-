@@ -7,12 +7,9 @@ using std::string;
 using std::sort;
 #include<cmath>
 
-/*
-  sort individual characters of a string
-*/
-long loc_to_dec(string s){
+long loc_to_dec(string loc){
     long total=0;
-    for (char c:s){
+    for (char c:loc){
         total+=pow(2,c-'a');
     }
     return total;
@@ -20,7 +17,6 @@ long loc_to_dec(string s){
 string abbreviate(string loc){
     string origin_string = loc;
     sort(loc.begin(),loc.end());
-
     for (long c = 1; c <= (loc.size());){
         char current_char = loc [c-1];
         char next_char = loc [c];
@@ -39,21 +35,28 @@ string abbreviate(string loc){
         }
     }
     return loc;
-
-
+}
 
 string dec_to_loc(long dec){
-    
+    char a = 'a';
+    string new_string = string (dec , a);
+    return abbreviate(new_string);
 }
+
+long add_loc (string loc1 , string loc2){
+    string new_string = abbreviate ((loc1 + loc2));
+    return loc_to_dec (new_string);
 }
 int main (){
-  // string my_str = "aebcd";
-  // cout << "String was:"<<my_str;
-  // sort(my_str.begin(), my_str.end());
-  // cout << ", and sorted is:"<< my_str<<endl;
-  string loc;
-  cin>>loc;
-
-  cout<<endl;
-  cout<<abbreviate(loc)<<endl;
+    string loc;
+    long dec;
+    cout<<"Please enter a location string: ";
+    cin>>loc;
+    cout<<"Please enter an integer: ";
+    cin>>dec;
+    cout<<"Location string is: "<<loc<<". "<<"Its resulting integer is: "<<loc_to_dec (loc)<<endl;
+    cout<<"Location string is: "<<loc<<". "<<"Its reduced form is: "<<abbreviate(loc)<<endl;
+    cout<<"Integer is: "<<dec<<" "<<"Its location string is: "<<dec_to_loc(dec)<<endl;
+    cout<<"Result: "<<add_loc(loc,loc)<<endl;
+    return 0;
 }
