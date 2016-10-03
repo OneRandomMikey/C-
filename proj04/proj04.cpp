@@ -1,18 +1,30 @@
+/*
+Zehua Li
+project 4
+section 03
+2016-10-1
+proj04.cpp
+
+comments:
+The program examine a range of integers and find, in that range, all the numbers
+that are: Natural palindromes, Lychrel number and all other numbers which,
+if not of the two above.
+*/
+
+
 #include<iostream>
 using std::cin; using std::cout; using std::endl;using std::boolalpha;
 #include<string>
 using std::string; using std::to_string; using std::stol;
 #include<algorithm>
-using std::sort; using std::swap;
-#include <iostream>
-using std::reverse;
-
+using std::swap;using std::reverse;
+// reverses the orger of the digits of n, returns that reversed number
 long rev_num(long n){
     string converted_n=to_string(n);
     reverse (converted_n.begin(),converted_n.end());
     return stol(converted_n);
 }
-
+// returns true if the number is a palindrome, false otherwise
 bool is_palindrome(long n){
     string converted_n = to_string(n);
     bool palindrome;
@@ -20,8 +32,6 @@ bool is_palindrome(long n){
         char front, back;
         front = converted_n[compare_time - 1];
         back = converted_n[converted_n.length() - compare_time];
-        //cout<<"front: "<< front<<endl;
-       // cout<<"back: "<<back<<endl;
         if (front == back){
             palindrome = true;
         }
@@ -31,21 +41,9 @@ bool is_palindrome(long n){
         }
     }
     return palindrome;
-    // // long compare_time = converted_n.length();
-    // if (converted_n.length() == 2){
-    //     if (converted_n[0] == converted_n[1]){
-    //         palindrome = true;
-    //     }
-    //     else{
-    //         palindrome = false;
-    //     }
-    // }
-    // else {
-    //     n = n + rev_num(n);
-    //
-    // }
 }
-
+// if the first is greater than second, then the two numbers should be swapped
+// if any of limit, first or second is less than one, return false, else return true
 bool check_args(long limit , long &first , long &second){
     bool x;
     if (first > second){
@@ -59,7 +57,9 @@ bool check_args(long limit , long &first , long &second){
     }
     return x;
 }
-
+// apply the 196 algorithm for limit iterations or until the number becomes a
+// palindrome
+// returns true if the number of iterations exceeds the limit , false otherwise
 bool check_lychrel(long n, long limit){
     long iterations = 0, n_rev, run_time=0;
     bool check = false, check_return;
@@ -70,17 +70,13 @@ bool check_lychrel(long n, long limit){
             n += n_rev;
             iterations ++;
             check = false;
-            //cout<< "something n: "<<n<<endl;
-           // cout<< "if iterations: "<<iterations <<endl;
             run_time ++;
         }
         else{
             check = true;
-           // cout<< " else iterations: "<<iterations <<endl;
         }
     }
     if (iterations > (limit)){
-       // cout<<"something iterations: "<<iterations<<endl;
         check_return = true;
     }
     else{
@@ -88,6 +84,8 @@ bool check_lychrel(long n, long limit){
     }
     return check_return;
 }
+// checks each number in the range from start to finish to classify each number
+// returns the count of Lychrel numbers found in the range
 
 long check_range(long start, long end, long limit, long &natural_cnt, long &pal_cnt){
     long count = 0;
@@ -129,4 +127,5 @@ int main() {
       cout << lychrel_cnt << " " << natural_cnt << " " << pal_cnt << endl;
     }
     else cout << "error" << endl;
+    return 0;
 }
