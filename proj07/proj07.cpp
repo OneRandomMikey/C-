@@ -5,6 +5,7 @@ section 03
 proj07.cpp
 
 commit: text processing, go throught text and find the unigrams and bigrams.
+insert unigrams and bigrams into different maps and caculate values.
 */
 
 #include<iostream>
@@ -111,22 +112,22 @@ string report_counts(const map<string,long>& bi,const map<string,long>& uni,
     long count_bigram, count_word1_minus_word12, count_word2_minus_word12,
         count_bi,count_uni;
     if (bi.count(bigram_key) > bi.count(bigram_key2)){
-        count_bigram = bi.find(bigram_key)->second;
+        count_bigram = bi.find(bigram_key)->second; //caculate the count of bigrams
     }
     else if ( bi.count(bigram_key) < bi.count(bigram_key2)){
-        count_bigram = bi.find(bigram_key2)->second;
+        count_bigram = bi.find(bigram_key2)->second;//caculate the count of bigrams
     }
     else{
         count_bigram = 0;
     }
 
-    count_word1_minus_word12 = uni.find(word1)->second - count_bigram;
-    count_word2_minus_word12 = uni.find(word2)->second - count_bigram;
+    count_word1_minus_word12 = uni.find(word1)->second - count_bigram;//caculate the count of count_word1 - word12
+    count_word2_minus_word12 = uni.find(word2)->second - count_bigram;//caculate the count of count_word2-word12
     for (auto element : bi){
-        count_bi ++;
+        count_bi ++;//caculate how many unigrams in map
     }
     for (auto element2: uni){
-        count_uni ++;
+        count_uni ++;//caculate how many bigrams in map
     }
     output = to_string(count_bigram)+' '+to_string(count_word1_minus_word12)+' '+
         to_string(count_word2_minus_word12)+' '+to_string(count_bi)+' '+
@@ -143,5 +144,4 @@ int main (){
     getline(cin,line); // clear the \n at end of first line
     read_file(bigrams, unigrams); // read the lines and process
     cout << report_counts(bigrams, unigrams, word1, word2)<< endl;
-    return 0;
 }
