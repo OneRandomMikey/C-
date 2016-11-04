@@ -8,7 +8,7 @@ using std::cout; using std::endl; using std::ostream;
 
 class Table{
 private:
-  vector<vector<long>> t_;    // 2D vector of long
+  vector<vector <long> > t_;    // 2D vector of long
   long width_;                // how wide is t_ (how many columns)
   long height_;               // how high is t_ (how many rows)
 public:
