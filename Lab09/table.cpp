@@ -14,6 +14,7 @@ Table::Table (long width, long height, long val){
     width_ = width;
     height_ = height;
     for ( long i = 0; i < height; i++){
+        w.clear();
         for (long h = 0; i < width; h++){
             w.push_back(width);
         }
@@ -27,9 +28,9 @@ void Table::fill_random(long lo, long hi, unsigned int seed){
     vector <long> w;
     for(long i = 0; i <= height_; i++){
         for(long h = 0; h < width_; h++){
-            w.push_back(dist(reng));
+            t_[i][h] = dist(reng);
         }
-        t_.push_back(w);
+        // t_.push_back(w);
     }
 }
 
